@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/6.0/package.xsd" name="dev.hanashi.wsc.change-author">
+	<packageinformation>
+		<!-- dev.hanashi.wsc.change-author -->
+		<packagename>Change post author</packagename>
+		<packagename language="de">Beitrags-Autor ändern</packagename>
+		<packagedescription>This plugin allows you to change the author of a post in the forum.</packagedescription>
+		<packagedescription language="de">Mit diesem Plugin lässt sich der Autor eines Beitrages im Forum ändern.</packagedescription>
+		<version>1.0.0</version>
+		<date>2025-07-03</date>
+	</packageinformation>
+	<authorinformation>
+		<author>Hanashi Development</author>
+		<authorurl>https://hanashi.dev</authorurl>
+	</authorinformation>
+	<requiredpackages>
+		<requiredpackage minversion="6.1.11">com.woltlab.wcf</requiredpackage>
+		<requiredpackage minversion="6.1.10">com.woltlab.wbb</requiredpackage>
+	</requiredpackages>
+	<excludedpackages>
+		<excludedpackage version="6.2.0 Alpha 1">com.woltlab.wcf</excludedpackage>
+		<excludedpackage version="6.2.0 Alpha 1">com.woltlab.wbb</excludedpackage>
+	</excludedpackages>
+</package>
