@@ -13,6 +13,7 @@ use wbb\data\post\PostAction;
 use wbb\data\post\PostEditor;
 use wbb\data\thread\Thread;
 use wbb\data\thread\ThreadAction;
+use wbb\system\log\modification\PostAuthorModificationLogHandler;
 use wcf\data\user\User;
 use wcf\http\Helper;
 use wcf\system\exception\IllegalLinkException;
@@ -65,6 +66,8 @@ final class ChangeAuthorAction implements RequestHandlerInterface
 
             $this->changePostOwner($post, $user);
             $this->changeThreadOwner($post, $thread, $user, $oldUser);
+
+            PostAuthorModificationLogHandler::getInstance()->changeAuthor($post);
 
             return new JsonResponse([]);
         } else {

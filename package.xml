@@ -28,9 +28,12 @@
 		<instruction type="language"/>
 		<instruction type="templateListener"/>
 		<instruction type="userGroupOption"/>
+		<instruction type="objectType"/>
 	</instructions>
 	<instructions type="update" fromversion="1.0.0">
 		<instruction type="file" application="wbb">files_wbb.tar</instruction>
 		<instruction type="template" application="wbb">templates_wbb.tar</instruction>
+		<instruction type="language"/>
+		<instruction type="objectType"/>
 	</instructions>
 </package>
