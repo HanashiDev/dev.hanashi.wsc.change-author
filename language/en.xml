@@ -6,7 +6,13 @@
 		</category>
 		<category name="wcf.message">
 			<item name="wcf.message.changeAuthor"><![CDATA[Edit author]]></item>
-			<item name="wcf.message.changeAuthor.succes"><![CDATA[The author has been successfully changed.]]></item>
+			<item name="wcf.message.changeAuthor.success"><![CDATA[The author has been successfully changed.]]></item>
+		</category>
+		<category name="wcf.acp.modificationLog">
+			<item name="wcf.acp.modificationLog.dev.hanashi.wbb.post.author.changeAuthor"><![CDATA[Post author changed]]></item>
 		</category>
 	</import>
+	<delete>
+		<item name="wcf.message.changeAuthor.succes"/>
+	</delete>
 </language>

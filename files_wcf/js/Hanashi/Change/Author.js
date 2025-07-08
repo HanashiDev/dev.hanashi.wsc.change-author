@@ -17,7 +17,7 @@ define(["require", "exports", "tslib", "WoltLabSuite/Core/Component/Dialog", "Wo
                 .usingFormBuilder()
                 .fromEndpoint(button.dataset.endpoint);
             if (ok) {
-                UiNotification.show(Language.getPhrase("wcf.message.changeAuthor.succes"), function () {
+                UiNotification.show(Language.getPhrase("wcf.message.changeAuthor.success"), function () {
                     window.location.reload();
                 }, "success");
             }

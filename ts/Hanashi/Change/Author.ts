@@ -17,7 +17,7 @@ export class ChangeAuthor {
       .fromEndpoint(button.dataset.endpoint!);
     if (ok) {
       UiNotification.show(
-        Language.getPhrase("wcf.message.changeAuthor.succes"),
+        Language.getPhrase("wcf.message.changeAuthor.success"),
         function () {
           window.location.reload();
         },
