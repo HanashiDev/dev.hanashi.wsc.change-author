@@ -6,7 +6,7 @@
 		<packagename language="de">Beitrags-Autor bearbeiten</packagename>
 		<packagedescription>This plugin allows you to change the author of a post in the forum.</packagedescription>
 		<packagedescription language="de">Mit diesem Plugin lässt sich der Autor eines Beitrages im Forum ändern.</packagedescription>
-		<version>1.0.0</version>
+		<version>1.0.1</version>
 		<date>2025-07-03</date>
 	</packageinformation>
 	<authorinformation>
@@ -28,5 +28,9 @@
 		<instruction type="language"/>
 		<instruction type="templateListener"/>
 		<instruction type="userGroupOption"/>
+	</instructions>
+	<instructions type="update" fromversion="1.0.0">
+		<instruction type="file" application="wbb">files_wbb.tar</instruction>
+		<instruction type="template" application="wbb">templates_wbb.tar</instruction>
 	</instructions>
 </package>
