@@ -11,6 +11,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use wbb\data\post\Post;
 use wbb\data\post\PostAction;
 use wbb\data\post\PostEditor;
+use wbb\data\thread\Thread;
 use wbb\data\thread\ThreadAction;
 use wcf\data\user\User;
 use wcf\http\Helper;
@@ -62,36 +63,8 @@ final class ChangeAuthorAction implements RequestHandlerInterface
                 throw new IllegalLinkException();
             }
 
-            $action = new PostAction([$post], 'update', [
-                'data' => [
-                    'userID' => $user->userID,
-                    'username' => $user->username,
-                ],
-            ]);
-            $action->executeAction();
-
-            $threadData = [];
-            if ($post->isFirstPost()) {
-                $threadData = [
-                    'userID' => $user->userID,
-                    'username' => $user->username,
-                ];
-            }
-            if ($thread->lastPostID == $post->postID) {
-                $threadData['lastPosterID'] = $user->userID;
-                $threadData['lastPoster'] = $user->username;
-            }
-            if ($threadData !== []) {
-                $action = new ThreadAction([$thread], 'update', [
-                    'data' => $threadData,
-                ]);
-                $action->executeAction();
-            }
-
-            if ($oldUser->userID) {
-                PostEditor::updatePostCounter([$oldUser->userID => -1]);
-            }
-            PostEditor::updatePostCounter([$user->userID => 1]);
+            $this->changePostOwner($post, $user);
+            $this->changeThreadOwner($post, $thread, $user, $oldUser);
 
             return new JsonResponse([]);
         } else {
@@ -119,5 +92,42 @@ final class ChangeAuthorAction implements RequestHandlerInterface
         $form->build();
 
         return $form;
+    }
+
+    private function changePostOwner(Post $post, User $user): void
+    {
+        $action = new PostAction([$post], 'update', [
+            'data' => [
+                'userID' => $user->userID,
+                'username' => $user->username,
+            ],
+        ]);
+        $action->executeAction();
+    }
+
+    private function changeThreadOwner(Post $post, Thread $thread, User $user, User $oldUser): void
+    {
+        $threadData = [];
+        if ($post->isFirstPost()) {
+            $threadData = [
+                'userID' => $user->userID,
+                'username' => $user->username,
+            ];
+        }
+        if ($thread->lastPostID == $post->postID) {
+            $threadData['lastPosterID'] = $user->userID;
+            $threadData['lastPoster'] = $user->username;
+        }
+        if ($threadData !== []) {
+            $action = new ThreadAction([$thread], 'update', [
+                'data' => $threadData,
+            ]);
+            $action->executeAction();
+        }
+
+        if ($oldUser->userID) {
+            PostEditor::updatePostCounter([$oldUser->userID => -1]);
+        }
+        PostEditor::updatePostCounter([$user->userID => 1]);
     }
 }
