@@ -93,11 +93,7 @@ final class ChangeAuthorAction implements RequestHandlerInterface
             }
             PostEditor::updatePostCounter([$user->userID => 1]);
 
-            return new JsonResponse([
-                'result' => [
-                    'postUrl' => $post->getLink(),
-                ],
-            ]);
+            return new JsonResponse([]);
         } else {
             throw new LogicException('Unreachable');
         }
