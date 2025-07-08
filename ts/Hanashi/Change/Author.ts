@@ -12,9 +12,7 @@ export class ChangeAuthor {
   }
 
   async #changeAuthorClicked(button: HTMLButtonElement) {
-    const { ok } = await dialogFactory()
-      .usingFormBuilder()
-      .fromEndpoint(button.dataset.endpoint!);
+    const { ok } = await dialogFactory().usingFormBuilder().fromEndpoint(button.dataset.endpoint!);
     if (ok) {
       UiNotification.show(
         Language.getPhrase("wcf.message.changeAuthor.success"),
