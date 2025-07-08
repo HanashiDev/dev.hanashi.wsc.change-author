@@ -67,7 +67,9 @@ final class ChangeAuthorAction implements RequestHandlerInterface
             $this->changePostOwner($post, $user);
             $this->changeThreadOwner($post, $thread, $user, $oldUser);
 
-            PostAuthorModificationLogHandler::getInstance()->changeAuthor($post);
+            if ($user->userID != $oldUser->userID) {
+                PostAuthorModificationLogHandler::getInstance()->changeAuthor($post);
+            }
 
             return new JsonResponse([]);
         } else {
