@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/6.0/templateListener.xsd">
 	<import>
-		<templatelistener name="threadPostListChangeAuthor">
-			<environment>user</environment>
-			<templatename>threadPostList</templatename>
-			<eventname>messageFooterButtons</eventname>
-			<templatecode><![CDATA[{include file='__threadPostListChangeAuthor' application='wbb'}]]></templatecode>
-		</templatelistener>
 		<templatelistener name="threadPostListChangeAuthorJs">
 			<environment>user</environment>
 			<templatename>threadPostList</templatename>
@@ -14,4 +8,11 @@
 			<templatecode><![CDATA[{include file='__threadPostListChangeAuthorJs' application='wbb'}]]></templatecode>
 		</templatelistener>
 	</import>
+	<delete>
+		<templatelistener name="threadPostListChangeAuthor">
+			<environment>user</environment>
+			<templatename>threadPostList</templatename>
+			<eventname>messageFooterButtons</eventname>
+		</templatelistener>
+	</delete>
 </data>
